@@ -1,0 +1,11 @@
+{
+  "name": "meu-projeto-cypress",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "cypress open",
+    "start": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^14.2.1"
+  }
+}
