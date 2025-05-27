@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "test": "cypress open",
-    "start": "cypress run"
+    "start": "serve public"
   },
   "devDependencies": {
-    "cypress": "^14.2.1"
+    "cypress": "^14.2.1",
+    "serve": "^14.2.4"
   }
 }

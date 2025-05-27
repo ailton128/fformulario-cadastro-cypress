@@ -4,11 +4,11 @@ describe('Teste Rápido do Formulário de Cadastro de Candidatos', () => {
     Cypress.config('defaultCommandTimeout', 3000);
 
     // Visita a página e remove animações antes de carregar
-    cy.visit('http://127.0.0.1:5500/cypress/public/formulario.html', {
-      onBeforeLoad(win) {
-        Object.defineProperty(win, 'requestAnimationFrame', { value: cb => cb() });
-      }
-    });
+    cy.visit('http://localhost:3000/formulario.html', {
+  onBeforeLoad(win) {
+    Object.defineProperty(win, 'requestAnimationFrame', { value: cb => cb() });
+  }
+});
   });
 
   it('Preenche e envia o formulário com sucesso', () => {
