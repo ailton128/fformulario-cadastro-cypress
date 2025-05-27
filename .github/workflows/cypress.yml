@@ -1,28 +1,28 @@
-name: Cypress Tests
+name: Run Cypress Tests
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main  # executa quando der push na branch main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main  # também executa nos PRs para main
 
 jobs:
-  tests:
+  cypress-run:
     runs-on: ubuntu-latest
 
     steps:
-      # 1 – Baixa seu código
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      # 2 – Instala a versão do Node usada no projeto
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'  # ou outra versão que você esteja usando
 
-      # 3 – Instala dependências (npm ci é mais rápido/seguro em CI)
-      - run: npm ci
+      - name: Install dependencies
+        run: npm install
 
-      # 4 – Roda o Cypress (essa action cuida do download,
-      #     permissões, cache, gravação de vídeos/screenshots etc.)
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+      - name: Run Cypress tests
+        run: npx cypress run
