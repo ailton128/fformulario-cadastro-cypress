@@ -7,20 +7,22 @@ on:
     branches: [ main ]
 
 jobs:
-  cypress-run:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      # 1 – Baixa seu código
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      # 2 – Instala a versão do Node usada no projeto
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
+      # 3 – Instala dependências (npm ci é mais rápido/seguro em CI)
+      - run: npm ci
 
-      - name: Run Cypress tests
-        run: npx cypress run
+      # 4 – Roda o Cypress (essa action cuida do download,
+      #     permissões, cache, gravação de vídeos/screenshots etc.)
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
