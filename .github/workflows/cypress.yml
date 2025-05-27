@@ -3,10 +3,10 @@ name: Run Cypress Tests
 on:
   push:
     branches:
-      - main  # executa quando der push na branch main
+      - main
   pull_request:
     branches:
-      - main  # também executa nos PRs para main
+      - main
 
 jobs:
   cypress-run:
@@ -19,10 +19,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # ou outra versão que você esteja usando
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
+
+      - name: Start local server
+        run: |
+          npx serve public &  # inicia o servidor local
+          sleep 5             # espera ele iniciar
 
       - name: Run Cypress tests
         run: npx cypress run
