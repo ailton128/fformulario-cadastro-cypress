@@ -24,10 +24,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Start local server
-        run: |
-          npx serve public &  # inicia o servidor local
-          sleep 5             # espera ele iniciar
+      - name: Start server and run Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run dev
+          wait-on: 'http://localhost:3000/public/formulario.html'
+          wait-on-timeout: 60
 
-      - name: Run Cypress tests
-        run: npx cypress run

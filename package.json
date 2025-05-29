@@ -2,8 +2,8 @@
   "name": "meu-projeto-cypress",
   "version": "1.0.0",
   "scripts": {
-    "test": "cypress open",
-    "start": "serve public"
+  "start": "npx serve public -l 3000",
+  "dev": "npx serve public -l 3000"
   },
   "devDependencies": {
     "cypress": "^14.2.1",

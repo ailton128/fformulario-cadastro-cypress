@@ -4,7 +4,7 @@ describe('Teste Rápido do Formulário de Cadastro de Candidatos', () => {
     Cypress.config('defaultCommandTimeout', 3000);
 
     // Visita a página e remove animações antes de carregar
-    cy.visit('http://localhost:3000/formulario.html', {
+    cy.visit('http://localhost:3000/public/formulario.html', {
   onBeforeLoad(win) {
     Object.defineProperty(win, 'requestAnimationFrame', { value: cb => cb() });
   }
