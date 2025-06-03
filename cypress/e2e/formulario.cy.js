@@ -1,45 +1,29 @@
 describe('Teste Rápido do Formulário de Cadastro de Candidatos', () => {
   beforeEach(() => {
-    // Reduz o tempo de espera para comandos
-    Cypress.config('defaultCommandTimeout', 3000);
+    Cypress.config('defaultCommandTimeout', 1500);
 
-    // Visita a página e remove animações antes de carregar
-    cy.visit('http://localhost:3000/public/formulario.html', {
+    cy.visit('http://127.0.0.1:5500/cypress/public/formulario.html', {
   onBeforeLoad(win) {
     Object.defineProperty(win, 'requestAnimationFrame', { value: cb => cb() });
-  }
-});
+      }
+    });
   });
 
-  it('Preenche e envia o formulário com sucesso', () => {
-    // Preenche nome e sobrenome
+  it.only('Preenche e envia o formulário com sucesso', () => {
     cy.get('input[name="nome"]').type("Ailton");
-    cy.get('input[name="sobrenome"]').should('exist').type("Silva");
+    cy.get('input[name="sobrenome"]').type("Silva");
+    cy.get('select[name="senioridade"]').select("Júnior");
+    cy.get('input[name="email"]').type("aiton240625@gmail.com");
+    cy.get('input[type="radio"][value="Front-end"]').check();
+    cy.get('input[type="checkbox"][value="JavaScript"]').check();
+    cy.get('textarea[name="experiencia"]').type("Tenho experiência com projetos de automação de testes acadêmico.");
 
-    // Seleciona a senioridade no <select>
-    cy.get('select[name="senioridade"]').should('exist').select("Júnior");
-
-    // Preenche o email
-    cy.get('input[name="email"]').should('exist').type("aiton240625@gmail.com");
-
-    // Marca o stack como Front-end
-    cy.get('input[type="radio"][value="Front-end"]').should('exist').check();
-
-    // Marca as tecnologias
-    cy.get('input[type="checkbox"][value="JavaScript"]').should('exist').check();
-
-    // Preenche a experiência
-    cy.get('textarea[name="experiencia"]').should('exist').type("Tenho experiência com projetos de automação de testes académico.");
-
-    // Captura o alerta de sucesso
     cy.on('window:alert', (msg) => {
       expect(msg).to.equal('Cadastro enviado com sucesso!');
     });
 
-    // Envia o formulário
-  // Verifica se a mensagem de sucesso aparece
-cy.get('button[type="submit"]').click();
-cy.get('#mensagem-sucesso').should('be.visible');
+    cy.get('button[type="submit"]').click();
+    cy.get('#mensagem-sucesso').should('be.visible');
   });
 });
 

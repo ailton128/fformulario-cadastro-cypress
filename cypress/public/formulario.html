@@ -43,7 +43,6 @@
   <p>Complete suas informações e boa sorte!</p>
 
   <form id="cadastro">
-    <!-- Nome / Sobrenome -->
     <label>Nome
       <input type="text" name="nome" required>
     </label>
@@ -51,7 +50,6 @@
       <input type="text" name="sobrenome" required>
     </label>
 
-    <!-- Senioridade -->
     <label>Senioridade
       <select name="senioridade" required>
         <option value="" disabled selected>Selecione</option>
@@ -61,12 +59,10 @@
       </select>
     </label>
 
-    <!-- E‑mail -->
     <label>Email
       <input type="email" name="email" placeholder="nome@provedor.com" required>
     </label>
 
-    <!-- Stack (radio) -->
     <fieldset>
       <legend>De qual lado da aplicação você desenvolve?</legend>
       <label><input type="radio" name="stack" value="Front-end" required> Front‑end</label>
@@ -74,7 +70,6 @@
       <label><input type="radio" name="stack" value="Fullstack"> Fullstack</label>
     </fieldset>
 
-    <!-- Tecnologias (checkbox) -->
     <fieldset>
       <legend>Selecione as tecnologias que utiliza:</legend>
       <label><input type="checkbox" name="tech" value="HTML"> HTML</label>
@@ -86,25 +81,25 @@
       <label><input type="checkbox" name="tech" value="PHP"> PHP</label>
     </fieldset>
 
-    <!-- Experiência -->
     <label>Conte um pouco da sua experiência:
       <textarea name="experiencia" rows="4" required></textarea>
     </label>
 
-    <!-- Botão -->
     <button type="submit">Concluído</button>
   </form>
 
-  <!-- Mensagem de sucesso -->
   <p id="mensagem-sucesso">Cadastro enviado com sucesso!</p>
 
-  <!-- Script sem alert -->
+  <!-- Script com alert incluído -->
   <script>
     document.getElementById('cadastro').addEventListener('submit', function(e) {
       e.preventDefault();
+      alert('Cadastro enviado com sucesso!');
       document.getElementById('mensagem-sucesso').style.display = 'block';
     });
   </script>
 </body>
+</html>
+
 </html>
 

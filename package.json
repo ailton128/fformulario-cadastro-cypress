@@ -1,12 +1,14 @@
 {
   "name": "meu-projeto-cypress",
   "version": "1.0.0",
-  "scripts": {
+ "scripts": {
   "start": "npx serve public -l 3000",
-  "dev": "npx serve public -l 3000"
+  "dev": "npx serve public -l 3000",
+  "test": "cypress open"
   },
   "devDependencies": {
     "cypress": "^14.2.1",
     "serve": "^14.2.4"
   }
 }
+
